@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text.Json;
-using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebTesting.Controllers
@@ -10,10 +10,10 @@ namespace WebTesting.Controllers
     {
         private bool _isAllocated;
         // GET
-        public IActionResult ResponseTime(int v)
+        public async Task<IActionResult> ResponseTime(int v)
         {
-            if(v == 2)
-                Thread.Sleep(100);
+            if (v == 2)
+                await Task.Delay(100);
             return new JsonResult(null);
         }
         
